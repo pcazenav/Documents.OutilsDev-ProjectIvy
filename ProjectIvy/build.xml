@@ -16,7 +16,7 @@
    specific language governing permissions and limitations
    under the License.    
 -->
-<project name="go-ivy" default="go" xmlns:ivy="antlib:org.apache.ivy.ant">
+<project name="go-ivy" default="go" xmlns:ivy="antlib:org.apache.ivy.ant" xmlns:cpptasks="antlib:net.sf.antcontrib.cpptasks">
     <!-- 
         this build file is a self contained project: it doesn't require anything else 
         that ant 1.6.2 or greater and java 1.4 or greater properly installed.
@@ -108,7 +108,8 @@ Let's go!
 
     <target name="run" depends="install-ivy, generate-src" 
             description="--> run the project">
-        <java classname="example.Hello">
+             
+     <java classname="example.Hello">
             <classpath>
                 <path refid="lib.path.id" />
                 <path location="${build.dir}" />
@@ -117,12 +118,22 @@ Let's go!
 
     </target>
 
+
+  <target name="run_csv" depends="install-ivy, generate-src" 
+            description="--> run .C about csv">
+     <mkdir dir="target/main/obj"/>
+     <cpptasks:cc outtype="executable" subsystem="console" outfile="target/csv" objdir="target/main/obj">
+        <fileset dir="src/" includes="*.c"/>
+    </cpptasks:cc>
+    </target>
 	<!-- ================================= 
           target: generate-src
             'Generates' the class source. It actually just echo a simple java 
             source code to a file. In real life this file would already be
             present on your file system, and this target wouldn't be necessary.
          ================================= -->
+
+         
     <target name="generate-src">
         <mkdir dir="${src.dir}/example" />
         <echo file="${src.dir}/example/Hello.java">
@@ -141,6 +152,7 @@ public class Hello {
         </echo>
     </target>
 	
+
     <!-- ================================= 
           target: clean              
          ================================= -->
@@ -165,4 +177,5 @@ public class Hello {
 			description="--> clean the ivy cache">
 		<ivy:cleancache />
 	</target>
+
 </project>

@@ -1,0 +1,19 @@
+https://github.com/pcazenav/Documents.OutilsDev-ProjectIvy.git
+
+1-Mon premier Projet Ant+Ivy
+
+ Ex4 : Le programme affiche "Standard message : "hello Ivy !", puis "Import by" + un nom et un message.
+Ex 6 : go sert à gerer les dependances, compiler et executer le programme. 
+  Javac sert à compiler le programme, et le tag java sert à l'exécuter.
+Ex 7 :  
+       <target name="run" depends="install-ivy, generate-src" description="--> run the project">
+        <java classname="example.Hello">
+            <classpath>
+                <path refid="lib.path.id" />
+                <path location="${build.dir}" />
+            </classpath>
+        </java>
+
+    </target>
+
+Ex 8 : La variable contient le chemin vers le .jar d'une librairie
