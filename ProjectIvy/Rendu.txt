@@ -17,3 +17,9 @@ Ex 7 :
     </target>
 
 Ex 8 : La variable contient le chemin vers le .jar d'une librairie
+Ex 9 : On obtient une erreur car le programme n'arrive pas à accéder aux sources. ivy:cachepath contient le chemin vers les sources
+
+Ex 11 : Lib.path.id contient desormais les chemins des sources et des commons_lang
+3 - 
+
+Ex 18 : Report/ contient un .graphml un .html et un .css
